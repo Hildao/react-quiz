@@ -2,9 +2,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import TextField from '@/ui/text-field';
 
+const defaultValues = {
+  email: '',
+  password: '',
+  name: '',
+  phone: '',
+};
+
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [values, setValues] = useState(defaultValues);
+  const { email, password, name, phone } = values;
 
   return (
     <div className='container mx-auto'>
@@ -17,7 +24,7 @@ export default function Home() {
             <TextField
               value={email}
               placeholder={'please enter your email'}
-              onChange={(email) => setEmail(email)}
+              onChange={(email) => setValues(email)}
             />
           </div>
           <div>
@@ -26,6 +33,22 @@ export default function Home() {
               type='password'
               value={password}
               placeholder='what is your password?'
+            />
+          </div>
+
+          <div>
+            <TextField
+              value={name}
+              placeholder={'Please enter your full name'}
+              onChange={(name) => setValues(name)}
+            />
+          </div>
+
+          <div>
+            <TextField
+              value={phone}
+              placeholder={'(234) 203-1744'}
+              onChange={(phone) => setValues(phone)}
             />
           </div>
 
